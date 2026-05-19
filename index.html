@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>НМТ Українська Мова Тести</title>
+    <style>
+        :root {
+            --bg-blue: #3b8dc7;
+            --text-dark: #333333;
+            --font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            --btn-blue: #2a81da;
+            --btn-hover: #1e6bb8;
+            --orange-badge: #ffaa00;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--bg-blue);
+            color: #ffffff;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 48px;
+            font-weight: bold;
+            margin-bottom: 30px;
+        }
+
+        /* Фільтри (роки) */
+        .filters {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: none;
+            padding: 10px 30px;
+            border-radius: 25px;
+            font-size: 16px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .filter-btn:hover { background-color: rgba(255, 255, 255, 0.3); }
+
+        .filter-btn.active {
+            background-color: white;
+            color: var(--bg-blue);
+        }
+
+        /* Сітка карток */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
+        }
+
+        /* Картка тесту */
+        .card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 25px;
+            color: var(--text-dark);
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .tag {
+            background-color: #eef5fb;
+            color: #6b8299;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .stats-top {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .price-badge {
+            background-color: var(--orange-badge);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .card-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: var(--bg-blue);
+            margin-bottom: 20px;
+            line-height: 1.4;
+        }
+
+        .stats-box {
+            background-color: #f4f8fa;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .stats-box p {
+            font-size: 14px;
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        .stats-box a {
+            color: var(--btn-blue);
+            text-decoration: underline;
+            font-size: 14px;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Посилання оформлене як кнопка */
+        .btn-start {
+            background-color: var(--btn-blue);
+            color: white;
+            text-decoration: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            font-size: 15px;
+            font-weight: bold;
+            text-align: center;
+            transition: 0.3s;
+        }
+
+        .btn-start:hover { background-color: var(--btn-hover); }
+
+        .social-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .action-btn {
+            background-color: #f0f5fa;
+            border: none;
+            color: #555;
+            padding: 8px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>НМТ Українська Мова Тести</h1>
+
+        <div class="filters">
+            <button class="filter-btn active">Усі</button>
+            <button class="filter-btn">2026</button>
+            <button class="filter-btn">2025</button>
+            <button class="filter-btn">2024</button>
+            <button class="filter-btn">2023</button>
+            <button class="filter-btn">2022</button>
+        </div>
+
+        <div class="cards-grid">
+            <!-- Картка 1 -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="tag">НМТ з української мови, 2026</span>
+                    <div class="stats-top">
+                        <span>👁 778</span>
+                        <span class="price-badge">🔒 49 грн</span>
+                    </div>
+                </div>
+                <h2 class="card-title">НМТ 2026 з української мови<br>(авторська симуляція, тренувальний варіант №9) 09.05.2026</h2>
+                <div class="stats-box">
+                    <p>Тут буде ваша статистика</p>
+                    <a href="#">пройти тест</a>
+                    <p>Бал НМТ: -</p>
+                    <p>Витрачено часу: -</p>
+                </div>
+                <div class="card-footer">
+                    <!-- ОСЬ ТУТ ПОСИЛАННЯ НА СТОРІНКУ ТЕСТУ -->
+                    <a href="test.html" class="btn-start">Перейти до тесту</a>
+                    <div class="social-actions">
+                        <button class="action-btn">➦ 6</button>
+                        <button class="action-btn">♡ 6</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Картка 2 (копія для вигляду) -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="tag">НМТ з української мови, 2026</span>
+                    <div class="stats-top">
+                        <span>👁 246</span>
+                        <span class="price-badge">🔒 49 грн</span>
+                    </div>
+                </div>
+                <h2 class="card-title">НМТ 2026 з української мови<br>(авторська симуляція, тренувальний варіант №8) 08.05.2026</h2>
+                <div class="stats-box">
+                    <p>Тут буде ваша статистика</p>
+                    <a href="#">пройти тест</a>
+                    <p>Бал НМТ: -</p>
+                    <p>Витрачено часу: -</p>
+                </div>
+                <div class="card-footer">
+                    <a href="test.html" class="btn-start">Перейти до тесту</a>
+                    <div class="social-actions">
+                        <button class="action-btn">➦ 2</button>
+                        <button class="action-btn">♡ 5</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Картка 3 (Безкоштовна, без замка) -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="tag">НМТ з української мови, 2026</span>
+                    <div class="stats-top">
+                        <span>👁 19075</span>
+                    </div>
+                </div>
+                <h2 class="card-title">НМТ 2026 з української мови<br>(авторська симуляція, тренувальний варіант №7) 07.05.2026</h2>
+                <div class="stats-box">
+                    <p>Тут буде ваша статистика</p>
+                    <a href="#">пройти тест</a>
+                    <p>Бал НМТ: -</p>
+                    <p>Витрачено часу: -</p>
+                </div>
+                <div class="card-footer">
+                    <a href="test.html" class="btn-start">Перейти до тесту</a>
+                    <div class="social-actions">
+                        <button class="action-btn">➦ 46</button>
+                        <button class="action-btn">♡ 28</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
