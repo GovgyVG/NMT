@@ -13,9 +13,6 @@
             --text-light: #666666;
             --border-color: #e0e0e0;
             --accent-blue: #0066cc; 
-            --match-bg-left: #d8eaf5; /* Колір синіх блоків */
-            --match-bg-right: #e0eee0; /* Колір зеленої панелі */
-            --match-item: #a6d8a3; /* Колір зелених плашок */
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;}
@@ -36,52 +33,53 @@
         .warning-text .red-text, .warning-text .bold-red { color: var(--primary-red); }
         .warning-text .bold-red { font-weight: bold; cursor: pointer; }
         .timer-section { display: flex; align-items: center; gap: 10px; }
-        
         .btn-finish { background-color: var(--primary-red); color: white; border: none; padding: 10px 20px; border-radius: 20px; font-weight: bold; font-size: 14px; cursor: pointer; transition: 0.2s; }
         .btn-finish:hover { background-color: #a00d2b; }
         .timer-time { font-weight: bold; font-size: 16px; min-width: 60px; text-align: center; }
         .btn-eye { background-color: var(--primary-red); color: white; border: none; width: 35px; height: 35px; border-radius: 4px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: 0.2s; flex-shrink: 0; }
         .btn-eye:hover { background-color: #a00d2b; }
 
-        /* Лейаут: Стовпець із завданнями + фіксована права панель */
+        /* Лейаут сторінки */
         .main-layout { display: flex; gap: 20px; align-items: flex-start; }
-
         .left-panel { flex: 1; display: flex; flex-direction: column; gap: 20px; }
         
-        .questions-container { background-color: var(--bg-white); border: 1px solid var(--border-color); border-radius: 4px; padding: 30px; display: flex; flex-direction: column; gap: 40px;}
+        .instruction-box { background-color: transparent; border-left: 3px solid var(--primary-red); padding: 5px 15px; font-size: 14px; color: #444; }
+        
+        .questions-container { background-color: var(--bg-white); border: 1px solid var(--border-color); border-radius: 4px; padding: 30px; display: flex; flex-direction: column; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
 
-        /* Блок окремого завдання */
-        .question-block { padding-bottom: 30px; border-bottom: 1px dashed var(--border-color); scroll-margin-top: 20px;}
-        .question-block:last-child { border-bottom: none; padding-bottom: 0; }
+        /* Окреме завдання */
+        .question-block { padding-bottom: 40px; margin-bottom: 40px; border-bottom: 1px dashed var(--border-color); scroll-margin-top: 20px;}
+        .question-block:last-child { border-bottom: none; padding-bottom: 0; margin-bottom: 0; }
 
-        .instruction-box { background-color: #fbf3f4; border-left: 3px solid var(--primary-red); padding: 15px 20px; font-size: 14px; margin-bottom: 30px; color: #444; }
         .question-title { font-size: 20px; font-weight: bold; margin-bottom: 15px; }
-        .question-text { font-size: 16px; margin-bottom: 20px; white-space: pre-line; }
+        .question-text { font-size: 16px; margin-bottom: 25px; white-space: pre-line; }
 
         /* Звичайні радіо-кнопки */
         .options-list { display: flex; flex-direction: column; gap: 15px; margin-bottom: 20px; }
         .option { display: flex; align-items: flex-start; gap: 15px; font-size: 16px; cursor: pointer; }
         .option input[type="radio"] { width: 18px; height: 18px; cursor: pointer; accent-color: var(--accent-blue); margin-top: 3px; }
 
-        /* ІНТЕРФЕЙС НА ВІДПОВІДНІСТЬ (MATCHING) */
-        .matching-wrapper { display: flex; gap: 20px; background-color: #eaf3f4; padding: 20px; border-radius: 8px; margin-bottom: 20px;}
-        .matching-left { flex: 3; display: flex; flex-direction: column; gap: 15px; }
-        .match-row { display: flex; align-items: center; gap: 10px; }
-        .match-text-box { background-color: var(--match-bg-left); padding: 15px; border-radius: 4px; flex: 1; font-size: 14px; color: #333; line-height: 1.4;}
-        .match-arrow { color: #888; font-weight: bold; }
-        .match-dropzone { width: 220px; min-height: 55px; background: white; border: 2px dashed #bbb; border-radius: 4px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: 0.2s;}
+        /* ІНТЕРФЕЙС НА ВІДПОВІДНІСТЬ (MATCHING) - ТОЧНА КОПІЯ З ФОТО 1 */
+        .matching-wrapper { display: flex; gap: 30px; margin-bottom: 20px;}
+        .matching-left { flex: 1.2; display: flex; flex-direction: column; gap: 15px; }
+        .match-row { display: flex; align-items: stretch; gap: 15px; }
+        
+        .match-text-box { background-color: #dbeafe; padding: 15px; border-radius: 6px; flex: 1; font-size: 14px; border: 1px solid #cbf0f8; color: #1e3a8a;}
+        .match-arrow { display: flex; align-items: center; color: #9ca3af; font-size: 24px; }
+        
+        .match-dropzone { width: 240px; min-height: 60px; background: white; border: 2px dashed #cbd5e1; border-radius: 6px; display: flex; align-items: stretch; justify-content: center; cursor: pointer; transition: 0.2s; overflow: hidden; }
         .match-dropzone.highlight { border-color: var(--primary-red); background-color: #fdf0f2; }
         
-        .matching-right { flex: 2; background-color: var(--match-bg-right); padding: 20px; border-radius: 8px; display: flex; flex-direction: column; gap: 12px;}
+        .matching-right { flex: 0.8; background-color: #e8f5e9; padding: 20px; border-radius: 6px; display: flex; flex-direction: column; gap: 12px; height: fit-content; }
         
-        .match-item { background-color: var(--match-item); padding: 12px 15px; border-radius: 4px; font-size: 14px; cursor: pointer; transition: 0.2s; user-select: none; border: 2px solid transparent;}
+        .match-item { background-color: #a5d6a7; padding: 12px 15px; border-radius: 6px; font-size: 14px; cursor: pointer; transition: 0.2s; user-select: none; border: 2px solid transparent;}
         .match-item:hover { filter: brightness(0.95); }
-        .match-item.selected-to-move { border: 2px solid #5a9e53; background-color: #92cd8e;}
-        .match-item.hidden { display: none; } /* Ховаємо, коли перенесено */
+        .match-item.selected-to-move { border: 2px solid #2e7d32; background-color: #81c784;}
+        .match-item.hidden { display: none; }
         
-        /* Елемент, який вставлено у пунктирну зону */
-        .dropped-item { background-color: var(--match-item); padding: 10px; border-radius: 4px; font-size: 14px; width: 90%; display: flex; justify-content: space-between; align-items: center;}
-        .remove-btn { background: white; color: #333; border: none; border-radius: 4px; width: 20px; height: 20px; cursor: pointer; font-weight: bold; font-size: 12px; display: flex; align-items: center; justify-content: center;}
+        .dropped-item { background-color: #a5d6a7; padding: 10px 15px; font-size: 14px; width: 100%; display: flex; justify-content: space-between; align-items: center; cursor: default;}
+        .remove-btn { background: white; color: #333; border: 1px solid #ccc; border-radius: 4px; width: 22px; height: 22px; cursor: pointer; font-weight: bold; font-size: 14px; display: flex; align-items: center; justify-content: center;}
+        .remove-btn:hover { background: #f5f5f5; }
 
         /* Кнопка збереження */
         .action-area { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; margin-top: 15px;}
@@ -97,6 +95,7 @@
         .numbers-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; padding: 20px; }
         .number-btn { background-color: var(--bg-white); border: 1px solid var(--border-color); padding: 12px 0; text-align: center; font-size: 14px; border-radius: 4px; cursor: pointer; color: var(--text-main); transition: 0.2s; }
         .number-btn:hover { border-color: #aaa; }
+        .number-btn.active { border: 1px solid var(--text-main); font-weight: bold;}
         .number-btn.answered { background-color: var(--primary-red); color: white; border-color: var(--primary-red); }
 
         /* Модальне вікно */
@@ -109,7 +108,7 @@
         .modal-btn.outline { background: white; border: 1px solid var(--primary-red); color: var(--primary-red); }
         .modal-btn.solid { background: var(--primary-red); border: 1px solid var(--primary-red); color: white; }
         .modal-warning { border: 1px solid var(--primary-red); padding: 20px; display: flex; gap: 15px; }
-        .warning-icon { background: var(--primary-red); color: white; width: 24px; height: 24px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-weight: bold; }
+        .warning-icon { background: var(--primary-red); color: white; width: 24px; height: 24px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-weight: bold; flex-shrink: 0;}
         
         #loader { text-align: center; padding: 50px; font-size: 18px; color: #666; }
 
@@ -117,6 +116,8 @@
             .main-layout { flex-direction: column; }
             .right-panel { width: 100%; position: static; }
             .matching-wrapper { flex-direction: column; }
+            .match-row { flex-direction: column; align-items: center; }
+            .match-arrow { transform: rotate(90deg); }
         }
     </style>
 </head>
@@ -142,22 +143,20 @@
 
         <div class="main-layout" id="mainContent" style="display: none;">
             
-            <!-- Лівий стовпець з усіма завданнями -->
             <section class="left-panel">
-                <div class="instruction-box" style="margin-bottom: 0;">
+                <div class="instruction-box">
                     Завдання мають декілька варіантів відповіді, з яких лише ОДИН правильний (або логічні пари). Виберіть правильний варіант та <b>ЗБЕРЕЖІТЬ</b>.
                 </div>
                 
                 <div class="questions-container" id="questionsContainer">
-                    <!-- Завдання будуть згенеровані тут -->
+                    <!-- Завдання генеруються тут -->
                 </div>
             </section>
 
-            <!-- Права панель з навігацією -->
             <aside class="right-panel">
                 <div class="right-panel-header">Завдання</div>
                 <div class="numbers-grid" id="rightPanelGrid">
-                    <!-- Кнопки генеруються тут -->
+                    <!-- Навігація генерується тут -->
                 </div>
             </aside>
         </div>
@@ -192,11 +191,11 @@
             const questionsContainer = document.getElementById('questionsContainer');
             const gridContainer = document.getElementById('rightPanelGrid');
 
-            // --- 1. ПАРСИНГ ФАЙЛУ ---
+            // --- 1. РОЗУМНИЙ ПАРСЕР (не боїться зниклих відступів) ---
             async function loadQuestionsData() {
                 try {
                     const response = await fetch('ukr.txt');
-                    if (!response.ok) throw new Error("File not found or CORS error");
+                    if (!response.ok) throw new Error("CORS");
                     const text = await response.text();
                     parseTextData(text);
                     initInterface();
@@ -206,62 +205,92 @@
             }
 
             function parseTextData(text) {
-                // Розділяємо блоки по порожніх рядках (або подвійних переносах)
-                const blocks = text.split(/\n\s*\n/);
+                questions = [];
+                let currentQ = null;
+                let inAnswers = false;
+                let isMatching = false;
                 
-                blocks.forEach(block => {
-                    const lines = block.trim().split('\n');
-                    if (lines.length < 2) return;
-
-                    let isMatching = false;
-                    let textLines = [];
-                    let options = [];
-                    let leftItems = [];
-                    let rightItems = [];
-                    let inAnswers = false;
-
-                    for (let line of lines) {
-                        line = line.trim();
-                        if (line === '[MATCHING]') {
-                            isMatching = true;
-                            continue;
-                        }
-                        if (line.startsWith('---')) {
-                            inAnswers = true;
-                            continue;
-                        }
-
-                        if (inAnswers) {
-                            if (isMatching) {
-                                // Парсинг правої колонки (А|текст)
+                const lines = text.replace(/\r/g, '').split('\n');
+                
+                for (let i = 0; i < lines.length; i++) {
+                    let line = lines[i].trim();
+                    if (!line) continue;
+                    
+                    const isSingleAnswer = line.startsWith('+') || line.startsWith('-');
+                    const isMatchLeft = /^\d+\s*\|/.test(line);
+                    const isMatchRight = /^[А-ЯІЇЄҐA-Z]+\s*\|/.test(line);
+                    const isDivider = line === '---';
+                    const isMatchTag = line === '[MATCHING]';
+                    
+                    const isAnswerContext = isSingleAnswer || isMatchLeft || isMatchRight || isDivider || isMatchTag;
+                    
+                    // Якщо ми читали відповіді і раптом пішов текст нового питання
+                    if (currentQ && inAnswers && !isAnswerContext) {
+                        questions.push(currentQ);
+                        currentQ = null;
+                        inAnswers = false;
+                        isMatching = false;
+                    }
+                    
+                    if (!currentQ) {
+                        currentQ = { type: 'single', text: '', options: [], left: [], right: [] };
+                        inAnswers = false;
+                        isMatching = false;
+                    }
+                    
+                    if (isMatchTag) {
+                        isMatching = true;
+                        currentQ.type = 'matching';
+                        continue;
+                    }
+                    
+                    if (isDivider) {
+                        inAnswers = true;
+                        continue;
+                    }
+                    
+                    if (inAnswers) {
+                        if (isMatching) {
+                            if (isMatchRight) {
                                 const parts = line.split('|');
-                                if(parts.length > 1) rightItems.push({ id: parts[0].trim(), text: parts[1].trim() });
-                            } else {
-                                // Парсинг звичайних відповідей (+ або -)
-                                const isCorrect = line.startsWith('+');
-                                options.push({ text: line.substring(1).trim(), isCorrect });
+                                currentQ.right.push({ id: parts[0].trim(), text: parts.slice(1).join('|').trim() });
+                            } else if (isMatchLeft) {
+                                const parts = line.split('|');
+                                currentQ.left.push({ id: parts[0].trim(), text: parts.slice(1).join('|').trim() });
                             }
                         } else {
-                            if (isMatching && line.match(/^\d+\|/)) {
-                                // Парсинг лівої колонки (1|текст)
-                                const parts = line.split('|');
-                                leftItems.push({ id: parts[0].trim(), text: parts[1].trim() });
-                            } else {
-                                textLines.push(line);
+                            if (isSingleAnswer) {
+                                const isCorrect = line.startsWith('+');
+                                const optText = line.substring(1).trim();
+                                currentQ.options.push({ text: optText, isCorrect });
                             }
                         }
+                    } else {
+                        if (isMatching && isMatchLeft) {
+                            const parts = line.split('|');
+                            currentQ.left.push({ id: parts[0].trim(), text: parts.slice(1).join('|').trim() });
+                        } else {
+                            currentQ.text += (currentQ.text ? '<br>' : '') + line;
+                        }
                     }
-
-                    if (isMatching) {
-                        questions.push({ type: 'matching', text: textLines.join('<br>'), left: leftItems, right: rightItems });
-                    } else if (options.length > 0) {
-                        questions.push({ type: 'single', text: textLines.join('<br>'), options: options });
-                    }
-                });
+                }
+                
+                if (currentQ) questions.push(currentQ);
             }
 
             // --- 2. ГЕНЕРАЦІЯ ІНТЕРФЕЙСУ ---
             function initInterface() {
+                // Обсервер для автопідсвічування кнопок при скролі
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const index = entry.target.dataset.index;
+                            document.querySelectorAll('.number-btn').forEach(btn => btn.classList.remove('active'));
+                            document.getElementById(`nav-btn-${index}`).classList.add('active');
+                        }
+                    });
+                }, { rootMargin: '-20% 0px -60% 0px' });
+
                 questions.forEach((q, i) => {
                     // Ініціалізація стану
                     if (q.type === 'single') {
@@ -270,19 +299,22 @@
                         userState.push({ type: 'matching', pairs: {}, saved: false, isReady: false, activeRightId: null });
                     }
 
-                    // Генерація кнопок правої панелі
+                    // Кнопки навігації
                     const navBtn = document.createElement('div');
                     navBtn.className = 'number-btn';
+                    navBtn.id = `nav-btn-${i}`;
                     navBtn.innerText = i + 1;
                     navBtn.addEventListener('click', () => {
                         document.getElementById(`q-${i}`).scrollIntoView({ behavior: 'smooth' });
                     });
                     gridContainer.appendChild(navBtn);
 
-                    // Генерація блоків завдань
+                    // Блоки питань
                     const qBlock = document.createElement('div');
                     qBlock.className = 'question-block';
                     qBlock.id = `q-${i}`;
+                    qBlock.dataset.index = i;
+                    observer.observe(qBlock);
 
                     const title = document.createElement('h2');
                     title.className = 'question-title';
@@ -295,11 +327,8 @@
                     qBlock.appendChild(title);
                     qBlock.appendChild(textP);
 
-                    if (q.type === 'single') {
-                        qBlock.appendChild(createSingleChoiceUI(q, i));
-                    } else {
-                        qBlock.appendChild(createMatchingUI(q, i));
-                    }
+                    if (q.type === 'single') qBlock.appendChild(createSingleChoiceUI(q, i));
+                    else qBlock.appendChild(createMatchingUI(q, i));
 
                     qBlock.appendChild(createSaveButtonUI(i));
                     questionsContainer.appendChild(qBlock);
@@ -309,7 +338,7 @@
                 mainContent.style.display = 'flex';
             }
 
-            // --- UI: ЗВИЧАЙНИЙ ВИБІР ---
+            // --- UI: РАДІО КНОПКИ ---
             function createSingleChoiceUI(q, qIndex) {
                 const list = document.createElement('div');
                 list.className = 'options-list';
@@ -325,7 +354,7 @@
                     input.addEventListener('change', () => {
                         userState[qIndex].selected = optIndex;
                         userState[qIndex].isReady = true;
-                        userState[qIndex].saved = false; // Змінили відповідь - скидаємо статус "збережено"
+                        userState[qIndex].saved = false; 
                         updateSaveBtnVisual(qIndex);
                     });
 
@@ -339,7 +368,7 @@
                 return list;
             }
 
-            // --- UI: НА ВІДПОВІДНІСТЬ (MATCHING) ---
+            // --- UI: НА ВІДПОВІДНІСТЬ ---
             function createMatchingUI(q, qIndex) {
                 const wrapper = document.createElement('div');
                 wrapper.className = 'matching-wrapper';
@@ -350,7 +379,6 @@
                 const rightCol = document.createElement('div');
                 rightCol.className = 'matching-right';
 
-                // Рендер лівої частини (сині блоки + пунктирні зони)
                 q.left.forEach(lItem => {
                     const row = document.createElement('div');
                     row.className = 'match-row';
@@ -361,20 +389,18 @@
                     
                     const arrow = document.createElement('div');
                     arrow.className = 'match-arrow';
-                    arrow.innerHTML = '&#10142;';
+                    arrow.innerHTML = '&#10132;'; // Стрілка як на фото
                     
                     const dropzone = document.createElement('div');
                     dropzone.className = 'match-dropzone';
                     dropzone.id = `dropzone-${qIndex}-${lItem.id}`;
                     
-                    // Клік по пунктирній зоні (щоб покласти туди вибраний зелений елемент)
                     dropzone.addEventListener('click', () => {
                         const state = userState[qIndex];
                         if (state.activeRightId) {
-                            // Зберігаємо пару
                             state.pairs[lItem.id] = state.activeRightId;
-                            state.activeRightId = null; // скидаємо вибране
-                            state.isReady = Object.keys(state.pairs).length > 0; // Активуємо кнопку, якщо є хоч 1 пара
+                            state.activeRightId = null;
+                            state.isReady = Object.keys(state.pairs).length > 0;
                             state.saved = false;
                             
                             reRenderMatching(q, qIndex, leftCol, rightCol);
@@ -388,19 +414,15 @@
                     leftCol.appendChild(row);
                 });
 
-                // Рендер правої частини (зелені варіанти)
                 q.right.forEach(rItem => {
                     const rBtn = document.createElement('div');
                     rBtn.className = 'match-item';
                     rBtn.id = `right-item-${qIndex}-${rItem.id}`;
                     rBtn.innerText = `${rItem.id}. ${rItem.text}`;
                     
-                    // Клік по зеленому варіанту
                     rBtn.addEventListener('click', () => {
                         const state = userState[qIndex];
-                        // Якщо він вже десь стоїть - ігноруємо
                         if (Object.values(state.pairs).includes(rItem.id)) return;
-                        
                         state.activeRightId = (state.activeRightId === rItem.id) ? null : rItem.id;
                         reRenderMatching(q, qIndex, leftCol, rightCol);
                     });
@@ -411,24 +433,18 @@
                 wrapper.appendChild(leftCol);
                 wrapper.appendChild(rightCol);
                 
-                // Первинний рендер станів
                 setTimeout(() => reRenderMatching(q, qIndex, leftCol, rightCol), 0);
-                
                 return wrapper;
             }
 
-            // Оновлення візуалу matching-блоку (перенесення елементів)
             function reRenderMatching(q, qIndex, leftCol, rightCol) {
                 const state = userState[qIndex];
 
-                // Оновлюємо праві (зелені) елементи
                 q.right.forEach(rItem => {
                     const rBtn = rightCol.querySelector(`#right-item-${qIndex}-${rItem.id}`);
                     if (!rBtn) return;
+                    rBtn.className = 'match-item'; 
                     
-                    rBtn.className = 'match-item'; // скидаємо стилі
-                    
-                    // Якщо елемент вже десь вставлений - ховаємо його з правої панелі
                     if (Object.values(state.pairs).includes(rItem.id)) {
                         rBtn.classList.add('hidden');
                     } else if (state.activeRightId === rItem.id) {
@@ -436,17 +452,15 @@
                     }
                 });
 
-                // Оновлюємо ліві зони
                 q.left.forEach(lItem => {
                     const dropzone = leftCol.querySelector(`#dropzone-${qIndex}-${lItem.id}`);
                     if (!dropzone) return;
                     
-                    dropzone.innerHTML = ''; // очищаємо
+                    dropzone.innerHTML = '';
                     dropzone.classList.remove('highlight');
 
                     const assignedRightId = state.pairs[lItem.id];
                     if (assignedRightId) {
-                        // Якщо сюди щось вставлено, малюємо зелений блок із хрестиком
                         const rData = q.right.find(r => r.id === assignedRightId);
                         
                         const dropped = document.createElement('div');
@@ -457,7 +471,7 @@
                         removeBtn.className = 'remove-btn';
                         removeBtn.innerText = '×';
                         removeBtn.addEventListener('click', (e) => {
-                            e.stopPropagation(); // щоб не спрацював клік по dropzone
+                            e.stopPropagation();
                             delete state.pairs[lItem.id];
                             state.saved = false;
                             reRenderMatching(q, qIndex, leftCol, rightCol);
@@ -467,13 +481,12 @@
                         dropped.appendChild(removeBtn);
                         dropzone.appendChild(dropped);
                     } else if (state.activeRightId) {
-                        // Якщо зараз вибрано елемент справа, підсвічуємо пусті зони
                         dropzone.classList.add('highlight');
                     }
                 });
             }
 
-            // --- КНОПКИ ЗБЕРЕЖЕННЯ ---
+            // --- UI: КНОПКА ЗБЕРЕЖЕННЯ ---
             function createSaveButtonUI(qIndex) {
                 const area = document.createElement('div');
                 area.className = 'action-area';
@@ -493,9 +506,7 @@
                     if (btn.disabled) return;
                     userState[qIndex].saved = true;
                     updateSaveBtnVisual(qIndex);
-                    
-                    // Фарбуємо квадратик справа назавжди
-                    gridContainer.children[qIndex].classList.add('answered');
+                    document.getElementById(`nav-btn-${qIndex}`).classList.add('answered');
                 });
 
                 area.appendChild(btn);
@@ -526,10 +537,9 @@
                 }
             }
 
-            // Виклик старту
             loadQuestionsData();
 
-            // --- ТАЙМЕР ТА ПРИХОВУВАННЯ ---
+            // --- ТАЙМЕР ---
             let totalSeconds = 3600; 
             const timerDisplay = document.getElementById('timerText');
             const btnEye = document.getElementById('toggleTimerBtn');
@@ -562,7 +572,7 @@
             finishBtn.addEventListener("click", () => {
                 let uncompleted = [];
                 userState.forEach((s, i) => { if (!s.saved) uncompleted.push(i + 1); });
-                uncompletedList.innerText = uncompleted.length === 0 ? "Усі завдання збережено!" : `Завдання ${uncompleted.join(", ")}`;
+                uncompletedList.innerText = uncompleted.length === 0 ? "Усі завдання збережено!" : `Українська мова: Завдання ${uncompleted.join(", ")}`;
                 modal.style.display = "flex";
             });
 
