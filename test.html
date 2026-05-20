@@ -14,11 +14,11 @@
             --border-color: #e0e0e0;
             --accent-blue: #0066cc; 
             
-            /* Оновлені кольори для відповідностей як на фото 1 */
-            --match-panel-left: #e2f0f4; /* Фон лівої частини */
-            --match-panel-right: #eaf5ea; /* Фон правої частини */
-            --match-box-blue: #c8e1f0; /* Сині блоки з текстом */
-            --match-box-green: #c6e5c6; /* Зелені плашки варіантів */
+            /* Кольори для відповідностей */
+            --match-panel-left: #e2f0f4; 
+            --match-panel-right: #eaf5ea; 
+            --match-box-blue: #c8e1f0; 
+            --match-box-green: #c6e5c6; 
             --match-box-blue-border: #b5d5e8;
             --match-box-green-border: #a8d5a8;
         }
@@ -51,7 +51,7 @@
         /* Лейаут: Стовпець із завданнями + фіксована права панель */
         .main-layout { display: flex; gap: 20px; align-items: flex-start; }
 
-        .left-panel { flex: 1; display: flex; flex-direction: column; gap: 20px; min-width: 0; /* Щоб flex не виходив за межі */ }
+        .left-panel { flex: 1; display: flex; flex-direction: column; gap: 20px; min-width: 0; }
         
         .questions-container { background-color: var(--bg-white); border: 1px solid var(--border-color); border-radius: 4px; padding: 30px; display: flex; flex-direction: column; gap: 40px;}
 
@@ -68,36 +68,39 @@
         .option { display: flex; align-items: flex-start; gap: 15px; font-size: 16px; cursor: pointer; }
         .option input[type="radio"] { width: 18px; height: 18px; cursor: pointer; accent-color: var(--accent-blue); margin-top: 3px; }
 
-        /* ІНТЕРФЕЙС НА ВІДПОВІДНІСТЬ (MATCHING) - ОНОВЛЕНО */
+        /* ІНТЕРФЕЙС НА ВІДПОВІДНІСТЬ */
         .matching-wrapper { display: flex; gap: 20px; margin-bottom: 20px;}
         
         .matching-left { flex: 1; display: flex; flex-direction: column; gap: 15px; background-color: var(--match-panel-left); padding: 20px; border-radius: 8px;}
         
-        .match-row { display: flex; align-items: center; gap: 15px; }
+        /* Вирівнювання висоти (stretch) щоб сині та зелені блоки були однакові */
+        .match-row { display: flex; align-items: stretch; gap: 15px; }
         
-        /* Синій блок з текстом тепер гнучкий і не буде звужуватись */
-        .match-text-box { background-color: var(--match-box-blue); padding: 15px; border-radius: 4px; flex: 1; min-width: 150px; font-size: 14px; color: #333; line-height: 1.4; border: 1px solid var(--match-box-blue-border);}
+        /* Синій блок з текстом. Відцентровано текст по вертикалі */
+        .match-text-box { background-color: var(--match-box-blue); padding: 15px; border-radius: 4px; flex: 1; min-width: 180px; font-size: 14px; color: #333; line-height: 1.4; border: 1px solid var(--match-box-blue-border); display: flex; align-items: center; }
         
-        .match-arrow { color: #888; font-weight: bold; font-size: 18px;}
+        .match-arrow { color: #888; font-weight: bold; font-size: 18px; display: flex; align-items: center; }
         
-        /* Пунктирна зона тепер має фіксовану ширину */
-        .match-dropzone { width: 250px; flex-shrink: 0; min-height: 65px; background: white; border: 2px dashed #bbb; border-radius: 4px; display: flex; align-items: center; justify-content: center; transition: 0.2s; position: relative;}
+        /* Зона кидання (відкоригована ширина для більшого простору ліворуч) */
+        .match-dropzone { width: 230px; flex-shrink: 0; min-height: 65px; background: white; border: 2px dashed #bbb; border-radius: 4px; display: flex; flex-direction: column; align-items: stretch; justify-content: center; transition: 0.2s; position: relative; padding: 4px;}
         .match-dropzone.highlight { border-color: var(--primary-red); background-color: #fdf0f2; }
         
-        /* Права панель з варіантами має фіксовану ширину */
-        .matching-right { width: 320px; flex-shrink: 0; background-color: var(--match-panel-right); padding: 20px; border-radius: 8px; display: flex; flex-direction: column; gap: 12px;}
+        /* Права панель з варіантами (звужена, щоб дати більше місця лівим блокам) */
+        .matching-right { width: 270px; flex-shrink: 0; background-color: var(--match-panel-right); padding: 20px; border-radius: 8px; display: flex; flex-direction: column; gap: 12px;}
         
         /* Зелені плашки (перетягувані) */
         .match-item { background-color: var(--match-box-green); padding: 12px 15px; border-radius: 4px; font-size: 14px; cursor: grab; transition: 0.2s; user-select: none; border: 1px solid var(--match-box-green-border); color: #333;}
         .match-item:active { cursor: grabbing; }
         .match-item:hover { filter: brightness(0.97); }
-        .match-item.hidden { display: none; } /* Ховаємо, коли перенесено */
+        .match-item.hidden { display: none; } 
         .match-item.dragging { opacity: 0.5; transform: scale(0.98); border: 1px dashed var(--text-light); }
         
-        /* Елемент, який вставлено у пунктирну зону */
-        .dropped-item { background-color: var(--match-box-green); padding: 10px 15px; border-radius: 4px; font-size: 14px; width: 100%; min-height: 100%; display: flex; justify-content: space-between; align-items: center; border: 1px solid var(--match-box-green-border); cursor: grab; user-select: none;}
+        /* Вставлений елемент (зелений). Розтягується на всю висоту dropzone */
+        .dropped-item { background-color: var(--match-box-green); padding: 10px 10px 25px 10px; border-radius: 4px; font-size: 14px; width: 100%; flex: 1; display: flex; align-items: center; border: 1px solid var(--match-box-green-border); cursor: grab; user-select: none; position: relative;}
         .dropped-item:active { cursor: grabbing; }
-        .remove-btn { background: white; color: #333; border: 1px solid #ccc; border-radius: 4px; width: 24px; height: 24px; cursor: pointer; font-weight: bold; font-size: 14px; display: flex; align-items: center; justify-content: center; transition: 0.2s; flex-shrink: 0; margin-left: 10px;}
+        
+        /* Кнопка "Хрестик" знизу справа як на фото */
+        .remove-btn { background: white; color: #333; border: 1px solid #ccc; border-radius: 3px; width: 20px; height: 20px; cursor: pointer; font-weight: bold; font-size: 14px; display: flex; align-items: center; justify-content: center; transition: 0.2s; position: absolute; bottom: 5px; right: 5px;}
         .remove-btn:hover { background-color: var(--primary-red); color: white; border-color: var(--primary-red); }
 
         /* Кнопка збереження */
@@ -384,9 +387,9 @@
                     dropzone.className = 'match-dropzone';
                     dropzone.id = `dropzone-${qIndex}-${lItem.id}`;
                     
-                    // Обробники подій для Drag-and-Drop на зону кидання
+                    // Обробники подій для Drag-and-Drop
                     dropzone.addEventListener('dragover', (e) => {
-                        e.preventDefault(); // Необхідно, щоб дозволити drop
+                        e.preventDefault(); 
                     });
                     
                     dropzone.addEventListener('dragenter', (e) => {
@@ -406,14 +409,12 @@
                         if (draggedId) {
                             const state = userState[qIndex];
                             
-                            // Видаляємо елемент з його попереднього місця (якщо він вже був кудись перетягнутий)
                             for (let key in state.pairs) {
                                 if (state.pairs[key] === draggedId) {
                                     delete state.pairs[key];
                                 }
                             }
                             
-                            // Записуємо нову пару
                             state.pairs[lItem.id] = draggedId;
                             state.isReady = Object.keys(state.pairs).length > 0;
                             state.saved = false;
@@ -429,14 +430,13 @@
                     leftCol.appendChild(row);
                 });
 
-                // Рендер правої частини (зелені варіанти)
+                // Рендер правої частини
                 q.right.forEach(rItem => {
                     const rBtn = document.createElement('div');
                     rBtn.className = 'match-item';
                     rBtn.id = `right-item-${qIndex}-${rItem.id}`;
                     rBtn.innerText = `${rItem.id}. ${rItem.text}`;
                     
-                    // Робимо елемент перетягуваним
                     rBtn.draggable = true;
                     
                     rBtn.addEventListener('dragstart', (e) => {
@@ -451,7 +451,7 @@
                     rightCol.appendChild(rBtn);
                 });
 
-                // Дозволяємо скидати елементи назад у праву колонку (щоб скасувати вибір)
+                // Скидання елементів назад у праву колонку
                 rightCol.addEventListener('dragover', (e) => e.preventDefault());
                 rightCol.addEventListener('drop', (e) => {
                     e.preventDefault();
@@ -481,7 +481,7 @@
             function reRenderMatching(q, qIndex, leftCol, rightCol) {
                 const state = userState[qIndex];
 
-                // Оновлюємо праві (зелені) елементи (ховаємо ті, що вже перетягнуті)
+                // Оновлюємо праві (зелені) елементи
                 q.right.forEach(rItem => {
                     const rBtn = rightCol.querySelector(`#right-item-${qIndex}-${rItem.id}`);
                     if (!rBtn) return;
@@ -499,18 +499,15 @@
                     if (!dropzone) return;
                     
                     dropzone.innerHTML = ''; 
-                    dropzone.style.border = ""; 
                     dropzone.classList.remove('highlight');
 
                     const assignedRightId = state.pairs[lItem.id];
                     if (assignedRightId) {
-                        dropzone.style.border = "none"; // Ховаємо пунктирну лінію, коли зайнято
-                        
                         const rData = q.right.find(r => r.id === assignedRightId);
                         
                         const dropped = document.createElement('div');
                         dropped.className = 'dropped-item';
-                        dropped.draggable = true; // Скинутий елемент також можна перетягувати далі!
+                        dropped.draggable = true; 
                         dropped.innerText = `${rData.id}. ${rData.text}`;
                         
                         dropped.addEventListener('dragstart', (e) => {
@@ -523,7 +520,7 @@
                         
                         const removeBtn = document.createElement('button');
                         removeBtn.className = 'remove-btn';
-                        removeBtn.innerText = '×';
+                        removeBtn.innerHTML = '&times;'; 
                         removeBtn.title = 'Скасувати вибір';
                         removeBtn.addEventListener('click', (e) => {
                             e.stopPropagation(); 
